@@ -8,7 +8,7 @@ import io.github.kabirnayeem99.resumade.R
 
 class PreviewActivity : AppCompatActivity() {
 
-    private val EXTRA_HTML: String = "html"
+    private val extraHtml: String = "html"
     private lateinit var toolbar: Toolbar
     private lateinit var webView: WebView
 
@@ -22,7 +22,7 @@ class PreviewActivity : AppCompatActivity() {
         supportActionBar?.title = "Preview"
 
         val receivedIntent = intent
-        val html = receivedIntent.getStringExtra(EXTRA_HTML)
+        val html = receivedIntent.getStringExtra(extraHtml)
 
         webView.loadDataWithBaseURL(null, html ?: "", "text/html", "utf-8", null)
     }

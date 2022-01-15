@@ -45,8 +45,7 @@ fun <T : ResumeEntity> List<T>.areAllItemsSaved(): Boolean = !this.isAnyItemUnsa
 fun WebView.createPrintJob(context: Context) {
     val printManager = context.getSystemService(Context.PRINT_SERVICE) as PrintManager
     val printAdapter = this.createPrintDocumentAdapter("Resumade document")
-    val printJob =
-        printManager.print("Resumade Job", printAdapter, PrintAttributes.Builder().build())
+    printManager.print("Resumade Job", printAdapter, PrintAttributes.Builder().build())
 }
 
 fun View.gone() {

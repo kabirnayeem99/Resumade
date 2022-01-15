@@ -30,8 +30,7 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
     private val createResumeActivityJob = Job()
     override val coroutineContext = Dispatchers.Main + createResumeActivityJob
 
-    private val TAG: String = this::class.java.simpleName
-    private val EXTRA_HTML: String = "html"
+    private val extraHtml: String = "html"
     private lateinit var createResumeViewModel: CreateResumeViewModel
     private lateinit var resumeFragmentAdapter: FragmentAdapter
     private lateinit var createResumeFab: FloatingActionButton
@@ -122,7 +121,7 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item?.itemId) {
+        return when (item.itemId) {
             R.id.done -> run {
                 this@CreateResumeActivity.hideKeyboard()
                 if (checkIfDetailsSaved()) {
@@ -160,7 +159,7 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
                             createResumeViewModel.projectsList.value!!
                         )
                         val intent = Intent(this@CreateResumeActivity, PreviewActivity::class.java)
-                        intent.putExtra(EXTRA_HTML, html)
+                        intent.putExtra(extraHtml, html)
                         startActivity(intent)
                     }
                 }
