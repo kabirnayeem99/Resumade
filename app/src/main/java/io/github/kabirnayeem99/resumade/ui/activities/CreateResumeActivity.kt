@@ -66,8 +66,8 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
         }
 
         createResumeViewModel = ViewModelProviders
-                .of(this)
-                .get(CreateResumeViewModel::class.java)
+            .of(this)
+            .get(CreateResumeViewModel::class.java)
 
         resumeFragmentAdapter = FragmentAdapter(supportFragmentManager)
         viewPager.adapter = resumeFragmentAdapter
@@ -100,17 +100,17 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
          */
         if (!createResumeViewModel.personalDetailsSaved || !createResumeViewModel.educationDetailsSaved || !createResumeViewModel.experienceDetailsSaved || !createResumeViewModel.projectDetailsSaved) {
             AlertDialog.Builder(ContextThemeWrapper(this, R.style.MyAlertDialog))
-                    .setTitle("Unsaved Details")
-                    .setMessage("Some details remain unsaved. Stay to view them.")
-                    .setPositiveButton("Stay") { _, _ ->
-                        checkIfDetailsSaved()
-                    }
-                    .setNegativeButton("Delete") { _, _ ->
-                        createResumeViewModel.deleteTempResume()
-                        super.onBackPressed()
-                    }
-                    .create()
-                    .show()
+                .setTitle("Unsaved Details")
+                .setMessage("Some details remain unsaved. Stay to view them.")
+                .setPositiveButton("Stay") { _, _ ->
+                    checkIfDetailsSaved()
+                }
+                .setNegativeButton("Delete") { _, _ ->
+                    createResumeViewModel.deleteTempResume()
+                    super.onBackPressed()
+                }
+                .create()
+                .show()
         } else {
             super.onBackPressed()
         }
@@ -121,7 +121,7 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item?.itemId) {
             R.id.done -> run {
                 this@CreateResumeActivity.hideKeyboard()
@@ -134,7 +134,12 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
                 this@CreateResumeActivity.hideKeyboard()
                 if (checkIfDetailsSaved()) {
                     launch(AppDispatchers.computationDispatcher) {
-                        val html = buildHtml(createResumeViewModel.resume.value!!, createResumeViewModel.educationList.value!!, createResumeViewModel.experienceList.value!!, createResumeViewModel.projectsList.value!!)
+                        val html = buildHtml(
+                            createResumeViewModel.resume.value!!,
+                            createResumeViewModel.educationList.value!!,
+                            createResumeViewModel.experienceList.value!!,
+                            createResumeViewModel.projectsList.value!!
+                        )
                         withContext(AppDispatchers.mainThreadDispatcher) {
                             webView = WebView(this@CreateResumeActivity)
                             webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null)
@@ -148,7 +153,12 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
                 this@CreateResumeActivity.hideKeyboard()
                 if (checkIfDetailsSaved()) {
                     launch(AppDispatchers.computationDispatcher) {
-                        val html = buildHtml(createResumeViewModel.resume.value!!, createResumeViewModel.educationList.value!!, createResumeViewModel.experienceList.value!!, createResumeViewModel.projectsList.value!!)
+                        val html = buildHtml(
+                            createResumeViewModel.resume.value!!,
+                            createResumeViewModel.educationList.value!!,
+                            createResumeViewModel.experienceList.value!!,
+                            createResumeViewModel.projectsList.value!!
+                        )
                         val intent = Intent(this@CreateResumeActivity, PreviewActivity::class.java)
                         intent.putExtra(EXTRA_HTML, html)
                         startActivity(intent)
@@ -223,22 +233,38 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
         with(createResumeViewModel) {
             if (!personalDetailsSaved) {
                 viewPager.setCurrentItem(0, true)
-                Snackbar.make(rootCoordinatorLayout, "Personal details unsaved", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    rootCoordinatorLayout,
+                    "Personal details unsaved",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 return false
             }
             if (!educationDetailsSaved) {
                 viewPager.setCurrentItem(1, true)
-                Snackbar.make(rootCoordinatorLayout, "Education details unsaved", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    rootCoordinatorLayout,
+                    "Education details unsaved",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 return false
             }
             if (!experienceDetailsSaved) {
                 viewPager.setCurrentItem(2, true)
-                Snackbar.make(rootCoordinatorLayout, "Experience details unsaved", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    rootCoordinatorLayout,
+                    "Experience details unsaved",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 return false
             }
             if (!projectDetailsSaved) {
                 viewPager.setCurrentItem(3, true)
-                Snackbar.make(rootCoordinatorLayout, "Project details unsaved", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    rootCoordinatorLayout,
+                    "Project details unsaved",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 return false
             }
             return true
