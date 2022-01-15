@@ -6,15 +6,15 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 31
     defaultConfig {
         applicationId "io.github.kabirnayeem99.resumade"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 31
         versionCode 11
         versionName "2.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -53,23 +53,24 @@ if (build_param != "dev") {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.media:media:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.room:room-runtime:2.1.0-alpha03'
-    kapt 'androidx.room:room-compiler:2.1.0-alpha03'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.media:media:1.4.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.room:room-runtime:2.4.1'
+    kapt 'androidx.room:room-compiler:2.4.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha01'
-    implementation 'com.google.firebase:firebase-core:16.0.6'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+    implementation 'com.google.android.material:material:1.6.0-alpha01'
+    implementation 'com.google.firebase:firebase-core:20.0.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

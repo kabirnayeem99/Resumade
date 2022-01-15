@@ -8,16 +8,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.MainActivity">
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.CreateResumeActivity" />
-        <activity android:name=".ui.activities.AboutUsActivity" />
-        <activity android:name=".ui.activities.PreviewActivity" />
+        <activity
+            android:name=".ui.activities.CreateResumeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.AboutUsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.PreviewActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

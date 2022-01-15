@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
@@ -31,8 +31,8 @@
         <item name="elevation">8dp</item>
         <item name="rippleColor">@color/primaryLightColor</item>
     </style>
-    
-    <style name="MyAlertDialog" parent="AlertDialog.MaterialComponents">
+
+    <style name="MyAlertDialog" parent="MaterialAlertDialog.Material3">
         <item name="android:textColorPrimary">@color/secondaryTextColor</item>
     </style>
 

@@ -11,7 +11,7 @@ import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.lifecycle.Observer
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import io.github.kabirnayeem99.resumade.R
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private val mainActivityJob = Job()
     override val coroutineContext = Dispatchers.Main + mainActivityJob
 
-    private val TAG = this::class.java.simpleName
     private lateinit var mainViewModel: MainViewModel
     private lateinit var resumeAdapter: ResumeAdapter
     private lateinit var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager
@@ -51,8 +50,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         collapsingToolbarLayout.title = resources.getString(R.string.app_name)
 
         mainViewModel = ViewModelProviders
-                .of(this)
-                .get(MainViewModel::class.java)
+            .of(this)
+            .get(MainViewModel::class.java)
 
         resumesRecyclerView = findViewById(R.id.resumesListRecyclerView)
         webView = WebView(this)
@@ -60,10 +59,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         setupRecyclerView()
 
         mainViewModel.resumesList
-                .observe(this, Observer {
-                    resumeAdapter.updateResumesList(it ?: emptyList())
-                    toggleNoResumesLayout(it?.size ?: 0)
-                })
+            .observe(this, {
+                resumeAdapter.updateResumesList(it ?: emptyList())
+                toggleNoResumesLayout(it?.size ?: 0)
+            })
 
         addResumeFab.setOnClickListener {
             val newResumeId: Long = -1
@@ -81,8 +80,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             R.id.about -> {
                 startActivity(Intent(this, AboutUsActivity::class.java))
                 true
@@ -110,29 +109,44 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             startActivity(intent)
         }
         linearLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        val dividerItemDecoration = androidx.recyclerview.widget.DividerItemDecoration(resumesRecyclerView.context, linearLayoutManager.orientation)
-        dividerItemDecoration.setDrawable(this.getDrawable(R.drawable.list_divider))
+        val dividerItemDecoration = androidx.recyclerview.widget.DividerItemDecoration(
+            resumesRecyclerView.context,
+            linearLayoutManager.orientation
+        )
+        val dividerDrawable = ContextCompat.getDrawable(this, R.drawable.list_divider)
+        if (dividerDrawable != null) {
+            dividerItemDecoration.setDrawable(dividerDrawable)
+        }
+
         resumesRecyclerView.apply {
             adapter = resumeAdapter
             layoutManager = linearLayoutManager
             addItemDecoration(dividerItemDecoration)
         }
         val itemTouchHelper = ItemTouchHelper(object : SwipeToDeleteCallback(this) {
-            override fun onSwiped(viewholder: androidx.recyclerview.widget.RecyclerView.ViewHolder, direction: Int) {
+            override fun onSwiped(
+                viewholder: androidx.recyclerview.widget.RecyclerView.ViewHolder,
+                direction: Int
+            ) {
                 val position = viewholder.adapterPosition
                 val id: Long = resumeAdapter.getResumeAtPosition(position).id
                 if (direction == ItemTouchHelper.LEFT) {
-                    AlertDialog.Builder(ContextThemeWrapper(this@MainActivity, R.style.MyAlertDialog))
-                            .setMessage("Are you sure you want to delete this resume?")
-                            .setPositiveButton("Yes") { _, _ ->
-                                mainViewModel.deleteResume(resumeAdapter.getResumeAtPosition(position))
-                            }
-                            .setNegativeButton("No") { dialog, _ ->
-                                resumeAdapter.notifyItemChanged(position)
-                                dialog.dismiss()
-                            }
-                            .create()
-                            .show()
+                    AlertDialog.Builder(
+                        ContextThemeWrapper(
+                            this@MainActivity,
+                            R.style.MyAlertDialog
+                        )
+                    )
+                        .setMessage("Are you sure you want to delete this resume?")
+                        .setPositiveButton("Yes") { _, _ ->
+                            mainViewModel.deleteResume(resumeAdapter.getResumeAtPosition(position))
+                        }
+                        .setNegativeButton("No") { dialog, _ ->
+                            resumeAdapter.notifyItemChanged(position)
+                            dialog.dismiss()
+                        }
+                        .create()
+                        .show()
                 } else {
                     launch {
                         lateinit var resume: Resume
