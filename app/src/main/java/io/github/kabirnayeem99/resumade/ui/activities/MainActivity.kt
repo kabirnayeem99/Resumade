@@ -46,8 +46,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(mainActivityToolbar)
-        collapsingToolbarLayout.title = resources.getString(R.string.app_name)
 
         mainViewModel = ViewModelProviders
             .of(this)
@@ -98,7 +96,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         } else {
             resumesListRecyclerView.invisible()
             noResumesView.visible()
-            mainActivityAppbarLayout.setExpanded(true, true)
         }
     }
 
