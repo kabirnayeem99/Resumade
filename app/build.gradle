@@ -12,7 +12,7 @@ apply plugin: 'io.fabric'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.haroldadmin.kshitijchauhan.resumade"
+        applicationId "io.github.kabirnayeem99.resumade"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 11
