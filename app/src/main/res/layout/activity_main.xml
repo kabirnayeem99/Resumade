@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -10,9 +9,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/mainActivityAppbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.Material3">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
@@ -35,8 +34,9 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/no_items_view"
-        android:id="@+id/noResumesView"/>
+    <include
+        android:id="@+id/noResumesView"
+        layout="@layout/no_items_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resumesListRecyclerView"
@@ -45,15 +45,15 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        style="@style/MyAddFab"
         android:id="@+id/addResumeFab"
+        style="@style/MyAddFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_round_add_24px"
         app:fabSize="normal"
         app:layout_anchor="@id/resumesListRecyclerView"
-        app:layout_anchorGravity="bottom|center"/>
+        app:layout_anchorGravity="bottom|center"
+        app:srcCompat="@drawable/ic_round_add_24px" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
