@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
@@ -24,7 +24,7 @@ class ExperienceFragment : Fragment() {
 
     private lateinit var experienceAdapter: ExperienceAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var createResumeViewModel: CreateResumeViewModel
+    private val createResumeViewModel: CreateResumeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,11 +61,6 @@ class ExperienceFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity?.let {
-            createResumeViewModel = ViewModelProviders
-                .of(it)
-                .get(CreateResumeViewModel::class.java)
-        }
 
         createResumeViewModel.experienceList
             .observe(viewLifecycleOwner, Observer {

@@ -1,4 +1,4 @@
-package io.github.kabirnayeem99.resumade.ui.viewmodel
+package io.github.kabirnayeem99.resumade.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,6 @@ import io.github.kabirnayeem99.resumade.data.database.Experience
 import io.github.kabirnayeem99.resumade.data.database.Project
 import io.github.kabirnayeem99.resumade.data.database.Resume
 import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
-import io.github.kabirnayeem99.resumade.ui.home.HomeUiState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

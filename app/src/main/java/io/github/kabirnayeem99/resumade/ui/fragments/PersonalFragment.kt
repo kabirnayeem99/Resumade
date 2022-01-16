@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_personal.*
 @AndroidEntryPoint
 class PersonalFragment : Fragment() {
 
-    private lateinit var createResumeViewModel: CreateResumeViewModel
+    private val createResumeViewModel: CreateResumeViewModel by viewModels()
     private lateinit var resume: Resume
 
     private var tempResumeName = ""
@@ -46,10 +46,6 @@ class PersonalFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        createResumeViewModel = ViewModelProviders
-            .of(activity!!)
-            .get(CreateResumeViewModel::class.java)
 
         createResumeViewModel.resume
             .observe(viewLifecycleOwner, Observer {

@@ -35,7 +35,6 @@ import io.github.kabirnayeem99.resumade.databinding.FragmentHomeBinding
 import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
 import io.github.kabirnayeem99.resumade.ui.adapter.ResumeAdapter
 import io.github.kabirnayeem99.resumade.ui.adapter.SwipeToDeleteCallback
-import io.github.kabirnayeem99.resumade.ui.viewmodel.HomeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
