@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,6 @@ import io.github.kabirnayeem99.resumade.data.database.Experience
 import io.github.kabirnayeem99.resumade.data.database.Project
 import io.github.kabirnayeem99.resumade.data.database.Resume
 import io.github.kabirnayeem99.resumade.databinding.FragmentHomeBinding
-import io.github.kabirnayeem99.resumade.ui.activities.AboutUsFragment
 import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
 import io.github.kabirnayeem99.resumade.ui.adapter.ResumeAdapter
 import io.github.kabirnayeem99.resumade.ui.adapter.SwipeToDeleteCallback
@@ -86,6 +86,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun setUpViews() {
+        setHasOptionsMenu(true)
         binding.apply {
             resumesListRecyclerView
             setupRecyclerView()
@@ -100,6 +101,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_main_activity, menu)
         val span = SpannableString("About")
         span.setSpan(ForegroundColorSpan(Color.BLACK), 0, span.length, 0)
@@ -109,7 +111,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.about -> {
-                startActivity(Intent(requireContext(), AboutUsFragment::class.java))
+                findNavController().navigate(R.id.action_homeFragment_to_aboutUsFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
