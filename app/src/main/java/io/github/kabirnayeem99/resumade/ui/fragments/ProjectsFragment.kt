@@ -8,19 +8,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.adapter.ProjectAdapter
-import io.github.kabirnayeem99.resumade.repository.database.Project
+import io.github.kabirnayeem99.resumade.common.utilities.areAllItemsSaved
+import io.github.kabirnayeem99.resumade.common.utilities.invisible
+import io.github.kabirnayeem99.resumade.common.utilities.visible
+import io.github.kabirnayeem99.resumade.data.database.Project
 import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
-import io.github.kabirnayeem99.resumade.utilities.areAllItemsSaved
-import io.github.kabirnayeem99.resumade.utilities.invisible
-import io.github.kabirnayeem99.resumade.utilities.visible
-import io.github.kabirnayeem99.resumade.viewmodel.CreateResumeViewModel
+import io.github.kabirnayeem99.resumade.ui.adapter.ProjectAdapter
+import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_projects.*
 
+@AndroidEntryPoint
 class ProjectsFragment : Fragment() {
 
-    private val TAG: String = this::class.java.simpleName
     private lateinit var projectAdapter: ProjectAdapter
     private lateinit var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager
     private lateinit var createResumeViewModel: CreateResumeViewModel

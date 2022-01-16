@@ -14,18 +14,20 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.adapter.ResumeAdapter
-import io.github.kabirnayeem99.resumade.adapter.SwipeToDeleteCallback
-import io.github.kabirnayeem99.resumade.repository.database.Education
-import io.github.kabirnayeem99.resumade.repository.database.Experience
-import io.github.kabirnayeem99.resumade.repository.database.Project
-import io.github.kabirnayeem99.resumade.repository.database.Resume
-import io.github.kabirnayeem99.resumade.utilities.*
-import io.github.kabirnayeem99.resumade.viewmodel.MainViewModel
+import io.github.kabirnayeem99.resumade.common.utilities.*
+import io.github.kabirnayeem99.resumade.data.database.Education
+import io.github.kabirnayeem99.resumade.data.database.Experience
+import io.github.kabirnayeem99.resumade.data.database.Project
+import io.github.kabirnayeem99.resumade.data.database.Resume
+import io.github.kabirnayeem99.resumade.ui.adapter.ResumeAdapter
+import io.github.kabirnayeem99.resumade.ui.adapter.SwipeToDeleteCallback
+import io.github.kabirnayeem99.resumade.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), CoroutineScope {
 
     private val mainActivityJob = Job()

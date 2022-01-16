@@ -1,0 +1,123 @@
+package io.github.kabirnayeem99.resumade.ui.viewmodel
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.kabirnayeem99.resumade.data.database.Education
+import io.github.kabirnayeem99.resumade.data.database.Experience
+import io.github.kabirnayeem99.resumade.data.database.Project
+import io.github.kabirnayeem99.resumade.data.database.Resume
+import io.github.kabirnayeem99.resumade.data.repository.DefaultResumeRepository
+import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
+import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
+import kotlinx.coroutines.*
+import javax.inject.Inject
+
+@HiltViewModel
+class CreateResumeViewModel
+@Inject constructor(
+    private val repository: ResumeRepository
+) : ViewModel(),
+    CoroutineScope {
+
+    private val createResumeViewModelJob = Job()
+
+    override val coroutineContext = Dispatchers.Main + createResumeViewModelJob
+
+    private var resumeId: Long
+    val resume: LiveData<Resume>
+    val educationList: LiveData<List<Education>>
+    val experienceList: LiveData<List<Experience>>
+    val projectsList: LiveData<List<Project>>
+
+    /*
+    Initializing these values as true because
+    the user might not want to add any of these
+    details at all. These will be set to false
+    upon the creation of an item in the respective
+    categories, and then back to true when the item
+    is saved. This also ensures that no empty item
+    is saved too.
+     */
+    var personalDetailsSaved: Boolean = true
+    var educationDetailsSaved: Boolean = true
+    var experienceDetailsSaved: Boolean = true
+    var projectDetailsSaved: Boolean = true
+
+
+    init {
+        resumeId = CreateResumeActivity.currentResumeId
+        if (resumeId == -1L) {
+            /*
+            We can run this in a non blocking way
+            because we don't care about the resumeId
+            for a new resume as long as the user does
+            not press the save button on the personal fragment,
+            or the add button in any other fragments. Those events
+            occur a long time after the viewmodel is created,
+            so we can ignore the possibility of resumeId being -1L
+            any time when it actually matters.
+             */
+            runBlocking {
+                resumeId = repository.insertResume(Resume("My Resume", "", "", "", "", "", "", ""))
+            }
+        }
+        resume = repository.getResumeForId(resumeId)
+        educationList = repository.getAllEducationForResume(resumeId)
+        experienceList = repository.getAllExperienceForResume(resumeId)
+        projectsList = repository.getAllProjectsForResume(resumeId)
+    }
+
+    fun insertBlankEducation() = launch {
+        val education = Education("", "", "", "", resumeId)
+        repository.insertEducation(education)
+    }
+
+    fun insertBlankExperience() = launch {
+        val experience = Experience("", "", "", resumeId)
+        repository.insertExperience(experience)
+    }
+
+    fun insertBlankProject() = launch {
+        val project = Project("", "", "", "", resumeId)
+        repository.insertProject(project)
+    }
+
+    fun updateResume(resume: Resume) = launch {
+        resume.id = resumeId
+        repository.updateResume(resume)
+    }
+
+    fun updateEducation(education: Education) = launch {
+        repository.updateEducation(education)
+    }
+
+    fun updateExperience(experience: Experience) = launch {
+        repository.updateExperience(experience)
+    }
+
+    fun updateProject(project: Project) = launch {
+        repository.updateProject(project)
+    }
+
+    fun deleteEducation(education: Education) = launch {
+        repository.deleteEducation(education)
+    }
+
+    fun deleteExperience(experience: Experience) = launch {
+        repository.deleteExperience(experience)
+    }
+
+    fun deleteProject(project: Project) = launch {
+        repository.deleteProject(project)
+    }
+
+    fun deleteTempResume() = launch {
+        repository.deleteResumeForId(resumeId)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        createResumeViewModelJob.cancel()
+    }
+}

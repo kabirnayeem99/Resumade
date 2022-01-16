@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
 
+@AndroidEntryPoint
 class PreviewActivity : AppCompatActivity() {
 
     private val extraHtml: String = "html"

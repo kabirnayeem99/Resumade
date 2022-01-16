@@ -9,16 +9,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.adapter.EducationAdapter
-import io.github.kabirnayeem99.resumade.repository.database.Education
+import io.github.kabirnayeem99.resumade.common.utilities.areAllItemsSaved
+import io.github.kabirnayeem99.resumade.common.utilities.invisible
+import io.github.kabirnayeem99.resumade.common.utilities.visible
+import io.github.kabirnayeem99.resumade.data.database.Education
 import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
-import io.github.kabirnayeem99.resumade.utilities.areAllItemsSaved
-import io.github.kabirnayeem99.resumade.utilities.invisible
-import io.github.kabirnayeem99.resumade.utilities.visible
-import io.github.kabirnayeem99.resumade.viewmodel.CreateResumeViewModel
+import io.github.kabirnayeem99.resumade.ui.adapter.EducationAdapter
+import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_education.*
 
+@AndroidEntryPoint
 class EducationFragment : Fragment() {
 
     private lateinit var educationAdapter: EducationAdapter

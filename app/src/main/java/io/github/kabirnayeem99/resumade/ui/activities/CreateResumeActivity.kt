@@ -14,17 +14,19 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.adapter.FragmentAdapter
+import io.github.kabirnayeem99.resumade.common.utilities.AppDispatchers
+import io.github.kabirnayeem99.resumade.common.utilities.buildHtml
+import io.github.kabirnayeem99.resumade.common.utilities.createPrintJob
+import io.github.kabirnayeem99.resumade.common.utilities.hideKeyboard
 import io.github.kabirnayeem99.resumade.ui.activities.MainActivity.Companion.EXTRA_RESUME_ID
-import io.github.kabirnayeem99.resumade.utilities.AppDispatchers
-import io.github.kabirnayeem99.resumade.utilities.buildHtml
-import io.github.kabirnayeem99.resumade.utilities.createPrintJob
-import io.github.kabirnayeem99.resumade.utilities.hideKeyboard
-import io.github.kabirnayeem99.resumade.viewmodel.CreateResumeViewModel
+import io.github.kabirnayeem99.resumade.ui.adapter.FragmentAdapter
+import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.activity_create_resume.*
 import kotlinx.coroutines.*
 
+@AndroidEntryPoint
 class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
 
     private val createResumeActivityJob = Job()

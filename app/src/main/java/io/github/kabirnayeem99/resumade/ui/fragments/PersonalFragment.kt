@@ -8,15 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.R.id.*
-import io.github.kabirnayeem99.resumade.repository.database.Resume
-import io.github.kabirnayeem99.resumade.repository.database.ResumeEntity
-import io.github.kabirnayeem99.resumade.utilities.inputvalidator.*
-import io.github.kabirnayeem99.resumade.utilities.showKeyboard
-import io.github.kabirnayeem99.resumade.viewmodel.CreateResumeViewModel
+import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.InputValidator
+import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.Text
+import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.addValidation
+import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.validateAll
+import io.github.kabirnayeem99.resumade.common.utilities.showKeyboard
+import io.github.kabirnayeem99.resumade.data.database.Resume
+import io.github.kabirnayeem99.resumade.data.database.ResumeEntity
+import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_personal.*
 
+@AndroidEntryPoint
 class PersonalFragment : Fragment() {
 
     private lateinit var createResumeViewModel: CreateResumeViewModel
@@ -31,7 +35,11 @@ class PersonalFragment : Fragment() {
     private var tempHobbies = ""
     private var tempDescription = ""
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_personal, container, false)
     }
@@ -164,7 +172,10 @@ class PersonalFragment : Fragment() {
 
             tempResumeName.addValidation()
                 .required("Resume name is required")
-                .matches("^[a-zA-Z0-9 ]*$".toRegex(RegexOption.IGNORE_CASE), "Can contain only alphabets and numbers")
+                .matches(
+                    "^[a-zA-Z0-9 ]*$".toRegex(RegexOption.IGNORE_CASE),
+                    "Can contain only alphabets and numbers"
+                )
                 .validate() to resumeNameWrapper
         )
             .validateAll()
