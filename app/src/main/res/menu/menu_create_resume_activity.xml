@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/done"
         android:icon="@drawable/ic_round_done_24px"
         android:title="@string/done"
+        app:iconTint="?android:colorPrimary"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/print"
         android:icon="@drawable/ic_round_print_24px"
         android:title="@string/print"
+        app:iconTint="@color/primaryColor"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/preview"
         android:icon="@drawable/ic_round_preview_24px"
         android:title="@string/preview"
+        app:iconTint="?android:colorPrimary"
         app:showAsAction="ifRoom" />
 </menu>

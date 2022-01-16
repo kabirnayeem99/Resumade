@@ -48,9 +48,9 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_resume)
-
-        setSupportActionBar(createResumeToolbar)
-        supportActionBar?.title = resources.getString(R.string.createResumeTitle)
+//
+//        setSupportActionBar(createResumeToolbar)
+//        supportActionBar?.title = resources.getString(R.string.createResumeTitle)
 
         createResumeFab = findViewById(R.id.createResumeFab)
         viewPager = findViewById(R.id.createResumeViewpager)

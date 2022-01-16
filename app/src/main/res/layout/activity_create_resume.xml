@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/rootCoordinatorLayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootCoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -12,17 +10,11 @@
         android:id="@+id/createResumeToolbarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Widget.MaterialComponents.ActionBar.Primary">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/createResumeToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/primaryColor"/>
+        android:theme="@style/Widget.Material3.ActionBar.Solid">
 
         <com.google.android.material.tabs.TabLayout
-            style="@style/MyTabLayout"
             android:id="@+id/createResumeTabs"
+            style="@style/MyTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -32,18 +24,18 @@
         android:id="@+id/createResumeViewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        style="@style/MyAddFab"
         android:id="@+id/createResumeFab"
+        style="@style/MyAddFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_round_add_24px"
+        android:animateLayoutChanges="true"
         app:layout_anchor="@id/createResumeViewpager"
         app:layout_anchorGravity="bottom|center"
-        android:animateLayoutChanges="true"/>
+        app:srcCompat="@drawable/ic_round_add_24px" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
