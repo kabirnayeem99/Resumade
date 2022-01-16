@@ -16,7 +16,7 @@ class ResumeAdapter(val onResumeCardClick: (resumeId: Long) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ResumeViewHolder =
         ResumeViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.card_resume, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item_resume, parent, false)
         )
 
     override fun getItemCount(): Int = resumesList.size

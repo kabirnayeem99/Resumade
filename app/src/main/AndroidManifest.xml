@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.activities.HostActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,6 @@
         </activity>
         <activity
             android:name=".ui.activities.CreateResumeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.activities.AboutUsActivity"
             android:exported="true" />
         <activity
             android:name=".ui.activities.PreviewActivity"

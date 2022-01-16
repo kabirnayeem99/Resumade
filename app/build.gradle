@@ -61,7 +61,6 @@ if (build_param != "dev") {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.media:media:1.4.3'
@@ -102,5 +101,19 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.4.0"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    // Loading Indicator -> KProgressHUD
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
+
+    // Icon pack -> FluentIcon
+    implementation 'com.microsoft.design:fluent-system-icons:1.1.155@aar'
+
+    // Navigation
+    def nav_version = "2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    implementation "androidx.navigation:navigation-compose:2.4.0-rc01"
 }
 

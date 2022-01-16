@@ -20,7 +20,7 @@ import io.github.kabirnayeem99.resumade.common.utilities.AppDispatchers
 import io.github.kabirnayeem99.resumade.common.utilities.buildHtml
 import io.github.kabirnayeem99.resumade.common.utilities.createPrintJob
 import io.github.kabirnayeem99.resumade.common.utilities.hideKeyboard
-import io.github.kabirnayeem99.resumade.ui.activities.MainActivity.Companion.EXTRA_RESUME_ID
+import io.github.kabirnayeem99.resumade.ui.home.HomeFragment.Companion.EXTRA_RESUME_ID
 import io.github.kabirnayeem99.resumade.ui.adapter.FragmentAdapter
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.activity_create_resume.*

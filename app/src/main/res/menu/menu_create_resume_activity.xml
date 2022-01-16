@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/done"
-        android:icon="@drawable/ic_round_done_24px"
+        android:icon="@drawable/ic_fluent_save_24_selector"
         android:title="@string/done"
         app:iconTint="?android:colorPrimary"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/print"
-        android:icon="@drawable/ic_round_print_24px"
+        android:icon="@drawable/ic_fluent_print_24_selector"
         android:title="@string/print"
         app:iconTint="?android:colorPrimary"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/preview"
-        android:icon="@drawable/ic_round_preview_24px"
+        android:icon="@drawable/ic_fluent_eye_show_24_selector"
         android:title="@string/preview"
         app:iconTint="?android:colorPrimary"
         app:showAsAction="ifRoom" />

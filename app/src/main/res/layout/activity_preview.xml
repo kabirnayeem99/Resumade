@@ -10,7 +10,7 @@
         android:id="@+id/previewActivityToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primaryColor"/>
+        android:background="@color/primaryColor" />
 
     <WebView
         android:id="@+id/previewActivityWebView"
