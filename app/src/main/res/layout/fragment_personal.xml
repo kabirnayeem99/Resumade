@@ -1,258 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalNameWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            android:textColorHint="@color/secondaryDarkColor"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/personalName"
-                android:inputType="textPersonName"
-                android:singleLine="true"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalPhoneWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalNameWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            app:helperText="@string/phoneHelperText"
-            app:helperTextTextAppearance="@style/helper_text_appearance"
-            android:textColorHint="@color/secondaryDarkColor">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalPhoneEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/personalPhone"
-                android:inputType="phone"
-                android:singleLine="true"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalEmailWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalPhoneWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            android:textColorHint="@color/secondaryDarkColor">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalEmailEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/personalEmail"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalCityWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalEmailWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            android:textColorHint="@color/secondaryDarkColor">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalCityEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/personalCurrentCity"
-                android:inputType="text"
-                android:singleLine="true"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalSkillsWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalCityWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            app:helperText="@string/skillsHelperText"
-            app:helperTextTextAppearance="@style/helper_text_appearance"
-            android:textColorHint="@color/secondaryDarkColor">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalSkillsEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/personalSkills"
-                android:inputType="textMultiLine"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalHobbiesWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalSkillsWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            app:helperText="@string/hobbiesHelperText"
-            app:helperTextTextAppearance="@style/helper_text_appearance"
-            android:textColorHint="@color/secondaryDarkColor">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalHobbiesEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/personalHobbies"
-                android:inputType="textMultiLine"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/personalDescriptionWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalHobbiesWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            android:textColorHint="@color/secondaryDarkColor"
-            app:helperText="@string/descriptionHelperText"
-            app:helperTextTextAppearance="@style/helper_text_appearance">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/personalDescriptionEditText"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="top"
-                android:hint="@string/personalDescription"
-                android:inputType="textMultiLine"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/resumeNameWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/personalDescriptionWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            app:boxCornerRadiusTopStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            android:textColorHint="@color/secondaryDarkColor"
-            app:helperText="@string/resumeNameHelperText"
-            app:helperTextTextAppearance="@style/helper_text_appearance">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/resumeNameEditText"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalNameWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:hint="@string/resumeName"
-                android:inputType="textPersonName"
-                android:singleLine="true"
-                android:textColor="@color/secondaryTextColor"
-                android:textCursorDrawable="@color/secondaryTextColor" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/personalName"
+                    android:inputType="textPersonName"
+                    android:singleLine="true" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/personalSaveButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/saveButtonText"
-            app:backgroundTint="@color/primaryColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/resumeNameWrapper" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalPhoneWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:helperText="@string/phoneHelperText"
+                app:helperTextTextAppearance="@style/helper_text_appearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalNameWrapper">
 
-</androidx.core.widget.NestedScrollView>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalPhoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/personalPhone"
+                    android:inputType="phone"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalEmailWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalPhoneWrapper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalEmailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/personalEmail"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalCityWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalEmailWrapper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalCityEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/personalCurrentCity"
+                    android:inputType="text"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalSkillsWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:helperText="@string/skillsHelperText"
+                app:helperTextTextAppearance="@style/helper_text_appearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalCityWrapper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalSkillsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/personalSkills"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalHobbiesWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:helperText="@string/hobbiesHelperText"
+                app:helperTextTextAppearance="@style/helper_text_appearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalSkillsWrapper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalHobbiesEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/personalHobbies"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personalDescriptionWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:helperText="@string/descriptionHelperText"
+                app:helperTextTextAppearance="@style/helper_text_appearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalHobbiesWrapper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/personalDescriptionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="top"
+                    android:hint="@string/personalDescription"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/resumeNameWrapper"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:helperText="@string/resumeNameHelperText"
+                app:helperTextTextAppearance="@style/helper_text_appearance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personalDescriptionWrapper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/resumeNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="@string/resumeName"
+                    android:inputType="textPersonName"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/personalSaveButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="50dp"
+                android:text="@string/saveButtonText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/resumeNameWrapper" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>
