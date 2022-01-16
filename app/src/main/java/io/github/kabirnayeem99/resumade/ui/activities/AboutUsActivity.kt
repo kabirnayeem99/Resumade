@@ -3,9 +3,7 @@ package io.github.kabirnayeem99.resumade.ui.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
 import kotlinx.android.synthetic.main.activity_about_us.*
@@ -16,12 +14,12 @@ class AboutUsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_us)
-
-        val window = this.window
-
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.secondaryColor)
+//
+//        val window = this.window
+//
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//        window.statusBarColor = ContextCompat.getColor(this, R.color.secondaryColor)
 
         val text = resources.getString(R.string.aboutUsText)
         aboutLinksTextView.text = text
