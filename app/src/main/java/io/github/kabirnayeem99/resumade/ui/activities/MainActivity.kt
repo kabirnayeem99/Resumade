@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main_activity, menu)
         val span = SpannableString("About")
         span.setSpan(ForegroundColorSpan(Color.BLACK), 0, span.length, 0)

@@ -1,7 +1,8 @@
 package io.github.kabirnayeem99.resumade.ui.viewmodel
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.kabirnayeem99.resumade.data.database.Education
 import io.github.kabirnayeem99.resumade.data.database.Experience
@@ -31,7 +32,16 @@ class MainViewModel
     so that it can only be read from other classes,
     but not modified.
      */
-    val resumesList: LiveData<List<Resume>> = repository.getAllResume()
+    val resumesList = MutableLiveData<List<Resume>>()
+
+    init {
+
+        viewModelScope.launch {
+            repository.getAllResume().collect {
+                resumesList.postValue(it)
+            }
+        }
+    }
 
     /*
     The main view model extends AndroidViewModel,

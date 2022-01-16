@@ -1,16 +1,19 @@
 package io.github.kabirnayeem99.resumade.ui.viewmodel
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.kabirnayeem99.resumade.data.database.Education
 import io.github.kabirnayeem99.resumade.data.database.Experience
 import io.github.kabirnayeem99.resumade.data.database.Project
 import io.github.kabirnayeem99.resumade.data.database.Resume
-import io.github.kabirnayeem99.resumade.data.repository.DefaultResumeRepository
 import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
 import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,11 +27,11 @@ class CreateResumeViewModel
 
     override val coroutineContext = Dispatchers.Main + createResumeViewModelJob
 
-    private var resumeId: Long
-    val resume: LiveData<Resume>
-    val educationList: LiveData<List<Education>>
-    val experienceList: LiveData<List<Experience>>
-    val projectsList: LiveData<List<Project>>
+    private var resumeId: Long = 0L
+    val resume = MutableLiveData<Resume>()
+    val educationList = MutableLiveData<List<Education>>()
+    val experienceList = MutableLiveData<List<Experience>>()
+    val projectsList = MutableLiveData<List<Project>>()
 
     /*
     Initializing these values as true because
@@ -46,69 +49,78 @@ class CreateResumeViewModel
 
 
     init {
-        resumeId = CreateResumeActivity.currentResumeId
-        if (resumeId == -1L) {
-            /*
-            We can run this in a non blocking way
-            because we don't care about the resumeId
-            for a new resume as long as the user does
-            not press the save button on the personal fragment,
-            or the add button in any other fragments. Those events
-            occur a long time after the viewmodel is created,
-            so we can ignore the possibility of resumeId being -1L
-            any time when it actually matters.
-             */
-            runBlocking {
-                resumeId = repository.insertResume(Resume("My Resume", "", "", "", "", "", "", ""))
+        viewModelScope.launch {
+            resumeId = CreateResumeActivity.currentResumeId
+            if (resumeId == -1L) {
+                /*
+                We can run this in a non blocking way
+                because we don't care about the resumeId
+                for a new resume as long as the user does
+                not press the save button on the personal fragment,
+                or the add button in any other fragments. Those events
+                occur a long time after the viewmodel is created,
+                so we can ignore the possibility of resumeId being -1L
+                any time when it actually matters.
+                 */
+                resumeId =
+                    repository.insertResume(Resume("My Resume", "", "", "", "", "", "", ""))
+            }
+            repository.getResumeForId(resumeId).collect {
+                resume.postValue(it)
+            }
+            repository.getAllEducationForResume(resumeId).collect {
+                educationList.postValue(it)
+            }
+            repository.getAllExperienceForResume(resumeId).collect {
+                experienceList.postValue(it)
+            }
+            repository.getAllProjectsForResume(resumeId).collect {
+                projectsList.postValue(it)
             }
         }
-        resume = repository.getResumeForId(resumeId)
-        educationList = repository.getAllEducationForResume(resumeId)
-        experienceList = repository.getAllExperienceForResume(resumeId)
-        projectsList = repository.getAllProjectsForResume(resumeId)
     }
 
-    fun insertBlankEducation() = launch {
+    fun insertBlankEducation() = viewModelScope.launch {
         val education = Education("", "", "", "", resumeId)
         repository.insertEducation(education)
     }
 
-    fun insertBlankExperience() = launch {
+    fun insertBlankExperience() = viewModelScope.launch {
         val experience = Experience("", "", "", resumeId)
         repository.insertExperience(experience)
     }
 
-    fun insertBlankProject() = launch {
+    fun insertBlankProject() = viewModelScope.launch {
         val project = Project("", "", "", "", resumeId)
         repository.insertProject(project)
     }
 
-    fun updateResume(resume: Resume) = launch {
+    fun updateResume(resume: Resume) = viewModelScope.launch {
         resume.id = resumeId
         repository.updateResume(resume)
     }
 
-    fun updateEducation(education: Education) = launch {
+    fun updateEducation(education: Education) = viewModelScope.launch {
         repository.updateEducation(education)
     }
 
-    fun updateExperience(experience: Experience) = launch {
+    fun updateExperience(experience: Experience) = viewModelScope.launch {
         repository.updateExperience(experience)
     }
 
-    fun updateProject(project: Project) = launch {
+    fun updateProject(project: Project) = viewModelScope.launch {
         repository.updateProject(project)
     }
 
-    fun deleteEducation(education: Education) = launch {
+    fun deleteEducation(education: Education) = viewModelScope.launch {
         repository.deleteEducation(education)
     }
 
-    fun deleteExperience(experience: Experience) = launch {
+    fun deleteExperience(experience: Experience) = viewModelScope.launch {
         repository.deleteExperience(experience)
     }
 
-    fun deleteProject(project: Project) = launch {
+    fun deleteProject(project: Project) = viewModelScope.launch {
         repository.deleteProject(project)
     }
 

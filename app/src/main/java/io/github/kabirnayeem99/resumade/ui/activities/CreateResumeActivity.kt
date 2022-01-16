@@ -117,7 +117,7 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_create_resume_activity, menu)
         return true
     }

@@ -12,7 +12,7 @@
         android:id="@+id/print"
         android:icon="@drawable/ic_round_print_24px"
         android:title="@string/print"
-        app:iconTint="@color/primaryColor"
+        app:iconTint="?android:colorPrimary"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/preview"

@@ -1,19 +1,19 @@
 package io.github.kabirnayeem99.resumade.data.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ResumeDao {
 
     @Query("SELECT * FROM resumes")
-    fun getAllResume(): LiveData<List<Resume>>
+    fun getAllResume(): Flow<List<Resume>>
 
     @Query("SELECT * FROM resumes WHERE id=:resumeId")
-    fun getResumeForId(resumeId: Long): LiveData<Resume>
+    fun getResumeForId(resumeId: Long): Flow<Resume>
 
     @Query("SELECT MAX(id) FROM resumes")
-    fun getLastResumeId(): LiveData<Long>
+    fun getLastResumeId(): Flow<Long>
 
     @Insert
     fun insertResume(resume: Resume): Long
@@ -38,7 +38,7 @@ interface EducationDAO {
     fun getAllEducation(): MutableList<Education>
 
     @Query("SELECT * FROM education WHERE resumeId=:resumeId")
-    fun getEducationForResume(resumeId: Long): LiveData<List<Education>>
+    fun getEducationForResume(resumeId: Long): Flow<List<Education>>
 
     @Query("SELECT * FROM education WHERE resumeId=:resumeId")
     fun getEducationForResumeOnce(resumeId: Long): List<Education>
@@ -60,10 +60,10 @@ interface EducationDAO {
 interface ExperienceDAO {
 
     @Query("SELECT * FROM experience")
-    fun getAllExperience(): LiveData<List<Experience>>
+    fun getAllExperience(): Flow<List<Experience>>
 
     @Query("SELECT * FROM experience WHERE resumeId=:resumeId")
-    fun getExperienceForResume(resumeId: Long): LiveData<List<Experience>>
+    fun getExperienceForResume(resumeId: Long): Flow<List<Experience>>
 
     @Query("SELECT * FROM experience WHERE resumeId=:resumeId")
     fun getExperienceForResumeOnce(resumeId: Long): List<Experience>
@@ -85,10 +85,10 @@ interface ExperienceDAO {
 interface ProjectsDAO {
 
     @Query("SELECT * FROM projects")
-    fun getAllProjects(): LiveData<List<Project>>
+    fun getAllProjects(): Flow<List<Project>>
 
     @Query("SELECT * FROM projects WHERE resumeId=:resumeId")
-    fun getProjectsForResume(resumeId: Long): LiveData<List<Project>>
+    fun getProjectsForResume(resumeId: Long): Flow<List<Project>>
 
     @Query("SELECT * FROM projects WHERE resumeId=:resumeId")
     fun getProjectsForResumeOnce(resumeId: Long): List<Project>
