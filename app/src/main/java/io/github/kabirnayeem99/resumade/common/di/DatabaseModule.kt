@@ -41,15 +41,7 @@ object DatabaseModule {
         app,
         ResumeDatabase::class.java,
         "resumes"
-    ).addCallback(object : RoomDatabase.Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-            ResumeDatabase
-                .getInstance(app)
-                .resumeDAO()
-                .insertResume(resume)
-        }
-    }).fallbackToDestructiveMigration().build()
+    ).fallbackToDestructiveMigration().build()
 
     @Singleton
     @Provides
