@@ -13,19 +13,11 @@
     </style>
 
     <style name="MyTabLayout" parent="Widget.Material3.TabLayout">
-        <!--        <item name="tabTextColor">@color/primaryTextColor</item>-->
-        <!--        <item name="tabSelectedTextColor">@color/primaryTextColor</item>-->
-        <!--        <item name="android:background">@color/primaryColor</item>-->
-        <!--        <item name="tabIndicatorColor">@color/primaryTextColor</item>-->
-        <!--        <item name="tabRippleColor">@color/primaryLightColor</item>-->
-        <!--        <item name="tabMode">scrollable</item>-->
-        <!--        <item name="tabGravity">fill</item>-->
+
     </style>
 
     <style name="MyAddFab" parent="Widget.Material3.FloatingActionButton.Primary">
-        <!--        <item name="tint">@android:color/white</item>-->
-        <!--        <item name="backgroundTint">@color/primaryColor</item>-->
-        <!--        <item name="rippleColor">@color/primaryLightColor</item>-->
+
     </style>
 
     <style name="MyAlertDialog" parent="MaterialAlertDialog.Material3">
