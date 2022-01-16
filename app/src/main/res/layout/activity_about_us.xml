@@ -18,9 +18,9 @@
                 android:id="@+id/imageView2"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -31,25 +31,24 @@
                 android:id="@+id/aboutDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
                 android:text="@string/created_by_kshitij_chauhan"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                android:textColor="@color/secondaryTextColor" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             <TextView
                 android:id="@+id/aboutLinksTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
                 android:autoLink="web"
                 android:lineSpacingExtra="4sp"
                 android:linksClickable="true"
@@ -57,8 +56,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/aboutDescription"
-                android:textColor="@color/secondaryTextColor" />
+                app:layout_constraintTop_toBottomOf="@+id/aboutDescription" />
 
             <TableLayout
                 android:layout_width="0dp"
@@ -86,7 +84,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_round_code_24px" />
+                        app:srcCompat="@drawable/ic_round_code_24px"
+                        app:tint="?android:colorPrimaryDark" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button2"
@@ -97,8 +96,7 @@
                         android:background="@null"
                         android:clickable="false"
                         android:text="@string/app_repository"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textAlignment="viewStart" />
                 </TableRow>
 
                 <TableRow
@@ -115,7 +113,8 @@
                         android:id="@+id/imageView5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/ic_github_circle" />
+                        app:srcCompat="@drawable/ic_github_circle"
+                        app:tint="?android:colorPrimaryDark" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button3"
@@ -126,8 +125,7 @@
                         android:background="@null"
                         android:clickable="false"
                         android:text="@string/dev_profile"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textAlignment="viewStart" />
                 </TableRow>
 
                 <TableRow
@@ -144,7 +142,8 @@
                         android:id="@+id/imageView6"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/ic_round_open_in_new_24px" />
+                        app:srcCompat="@drawable/ic_round_open_in_new_24px"
+                        app:tint="?android:colorPrimaryDark" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button4"
@@ -155,8 +154,7 @@
                         android:background="@null"
                         android:clickable="false"
                         android:text="@string/standard_resume"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textAlignment="viewStart" />
                 </TableRow>
 
                 <TableRow
@@ -173,7 +171,8 @@
                         android:id="@+id/imageView7"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/ic_round_rate_review_24px" />
+                        app:srcCompat="@drawable/ic_round_rate_review_24px"
+                        app:tint="?android:colorPrimaryDark" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button5"
@@ -184,8 +183,7 @@
                         android:background="@null"
                         android:clickable="false"
                         android:text="@string/rate_the_app"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/secondaryTextColor" />
+                        android:textAlignment="viewStart" />
                 </TableRow>
 
             </TableLayout>
