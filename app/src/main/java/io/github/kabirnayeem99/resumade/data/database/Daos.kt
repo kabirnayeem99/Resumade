@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface ResumeDAO {
+interface ResumeDao {
 
     @Query("SELECT * FROM resumes")
     fun getAllResume(): LiveData<List<Resume>>

@@ -2,8 +2,6 @@ package io.github.kabirnayeem99.resumade.common.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,7 +43,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideResumeDao(db: ResumeDatabase) = db.resumeDAO()
+    fun provideResumeDao(db: ResumeDatabase) = db.resumeDao()
 
     @Singleton
     @Provides

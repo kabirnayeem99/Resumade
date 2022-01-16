@@ -13,42 +13,42 @@ class DefaultResumeRepository @Inject constructor(
 ) : ResumeRepository {
 
     override fun getAllResume(): LiveData<List<Resume>> {
-        return database.resumeDAO().getAllResume()
+        return database.resumeDao().getAllResume()
     }
 
     override fun getResumeForId(resumeId: Long): LiveData<Resume> {
-        return database.resumeDAO().getResumeForId(resumeId)
+        return database.resumeDao().getResumeForId(resumeId)
     }
 
     override fun getSingleResumeForId(resumeId: Long) =
-        database.resumeDAO().getSingleResume(resumeId)
+        database.resumeDao().getSingleResume(resumeId)
 
     override suspend fun insertResume(resume: Resume): Long {
         return withContext(AppDispatchers.diskDispatcher) {
-            database.resumeDAO().insertResume(resume)
+            database.resumeDao().insertResume(resume)
         }
     }
 
     override suspend fun deleteResume(resume: Resume) {
         withContext(AppDispatchers.diskDispatcher) {
-            database.resumeDAO().deleteResume(resume)
+            database.resumeDao().deleteResume(resume)
         }
     }
 
     override suspend fun deleteResumeForId(resumeId: Long) {
         withContext(AppDispatchers.diskDispatcher) {
-            database.resumeDAO().deleteResumeForId(resumeId)
+            database.resumeDao().deleteResumeForId(resumeId)
         }
     }
 
     override suspend fun updateResume(resume: Resume) {
         withContext(AppDispatchers.diskDispatcher) {
-            database.resumeDAO().updateResume(resume)
+            database.resumeDao().updateResume(resume)
         }
     }
 
     override fun getLastResumeId(): LiveData<Long> {
-        return database.resumeDAO().getLastResumeId()
+        return database.resumeDao().getLastResumeId()
     }
 
     override fun getAllEducationForResume(resumeId: Long): LiveData<List<Education>> {
