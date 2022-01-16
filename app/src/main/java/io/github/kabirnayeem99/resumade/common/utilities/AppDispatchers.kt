@@ -7,15 +7,15 @@ import java.util.concurrent.Executors
 
 object AppDispatchers {
 
-	/*
-	A single threaded executor for handling database operations
-	Using just one thread to enable sequential read/writes to the
-	database in order to avoid race conditions
-	 */
-	private val diskIO : ExecutorService = Executors.newSingleThreadExecutor()
+    /*
+    A single threaded executor for handling database operations
+    Using just one thread to enable sequential read/writes to the
+    database in order to avoid race conditions
+     */
+    private val diskIO: ExecutorService = Executors.newSingleThreadExecutor()
 
-	val diskDispatcher = diskIO.asCoroutineDispatcher()
-	val computationDispatcher = Dispatchers.Default
-	val mainThreadDispatcher = Dispatchers.Main
+    val diskDispatcher = diskIO.asCoroutineDispatcher()
+    val computationDispatcher = Dispatchers.Default
+    val mainThreadDispatcher = Dispatchers.Main
 }
 
