@@ -9,7 +9,7 @@ import io.github.kabirnayeem99.resumade.data.database.Experience
 import io.github.kabirnayeem99.resumade.data.database.Project
 import io.github.kabirnayeem99.resumade.data.database.Resume
 import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
-import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
+import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -50,7 +50,7 @@ class CreateResumeViewModel
 
     init {
         viewModelScope.launch {
-            resumeId = CreateResumeActivity.currentResumeId
+            resumeId = CreateResumeFragment.currentResumeId
             if (resumeId == -1L) {
                 /*
                 We can run this in a non blocking way

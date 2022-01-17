@@ -14,4 +14,8 @@ class HostActivity : BaseActivity<ActivityHostBinding>() {
     override fun onCreated(savedInstanceState: Bundle?) {
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 }

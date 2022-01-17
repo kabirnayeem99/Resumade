@@ -17,9 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activities.CreateResumeActivity"
-            android:exported="true" />
+
         <activity
             android:name=".ui.activities.PreviewActivity"
             android:exported="true" />

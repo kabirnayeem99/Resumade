@@ -1,6 +1,6 @@
 package io.github.kabirnayeem99.resumade.data.repository
 
-import io.github.kabirnayeem99.resumade.data.dataSource.ResumeDataSource
+import io.github.kabirnayeem99.resumade.data.dataSource.ResumeLocalDataSource
 import io.github.kabirnayeem99.resumade.data.database.Education
 import io.github.kabirnayeem99.resumade.data.database.Experience
 import io.github.kabirnayeem99.resumade.data.database.Project
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 
 class DefaultResumeRepository @Inject constructor(
-    private val dataSource: ResumeDataSource
+    private val dataSource: ResumeLocalDataSource
 ) : ResumeRepository {
 
     override fun getAllResume(): Flow<List<Resume>> {

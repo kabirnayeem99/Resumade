@@ -3,11 +3,8 @@ package io.github.kabirnayeem99.resumade.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.kabirnayeem99.resumade.data.database.Education
-import io.github.kabirnayeem99.resumade.data.database.Experience
-import io.github.kabirnayeem99.resumade.data.database.Project
-import io.github.kabirnayeem99.resumade.data.database.Resume
-import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
+import io.github.kabirnayeem99.resumade.domain.entity.ResumeOverview
+import io.github.kabirnayeem99.resumade.domain.repository.ResumeListRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,20 +14,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel
-@Inject constructor(
-    private val repository: ResumeRepository
-) : ViewModel() {
+@Inject constructor(private val repository: ResumeListRepository) : ViewModel() {
 
 
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
 
-
     private var deleteResumeJob: Job? = null
-    fun deleteResume(resume: Resume) {
+    fun deleteResume(resumeOverview: ResumeOverview) {
         deleteResumeJob?.cancel()
         deleteResumeJob = viewModelScope.launch {
-            repository.deleteResume(resume)
+            repository.deleteResume(resumeOverview).collect { message ->
+                _homeUiState.update { it.copy(message = message) }
+            }
         }
     }
 
@@ -38,34 +34,19 @@ class HomeViewModel
     fun getResumeList() {
         fetchResumeJob?.cancel()
         fetchResumeJob = viewModelScope.launch {
-            repository.getAllResume().collect { resumeList ->
-                if (resumeList.isNotEmpty()) _homeUiState.update {
-                    it.copy(resumeList = resumeList)
-                }
-            }
-        }
-    }
-
-
-    private var getResumeForIdJob: Job? = null
-    fun getResumeForId(resumeId: Long) {
-        getResumeForIdJob?.cancel()
-        getResumeForIdJob = viewModelScope.launch {
-            repository.getResumeForId(resumeId).collect { resume ->
+            _homeUiState.update { it.copy(isLoading = true) }
+            repository.getResumeList().collect { resource ->
                 _homeUiState.update {
-                    it.copy(selectedResume = resume)
+                    it.copy(
+                        resumeList = resource.data ?: emptyList(),
+                        message = resource.message ?: "",
+                        isLoading = false,
+                        selectedResume = null,
+                    )
                 }
             }
         }
     }
 
-    fun getEducationForResume(resumeId: Long): List<Education> =
-        repository.getAllEducationForResumeOnce(resumeId)
-
-    fun getExperienceForResume(resumeId: Long): List<Experience> =
-        repository.getAllExperienceForResumeOnce(resumeId)
-
-    fun getProjectForResume(resumeId: Long): List<Project> =
-        repository.getAllProjectsForResumeOnce(resumeId)
 
 }

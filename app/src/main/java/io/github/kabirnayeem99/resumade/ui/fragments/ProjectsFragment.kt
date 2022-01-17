@@ -14,7 +14,7 @@ import io.github.kabirnayeem99.resumade.common.utilities.areAllItemsSaved
 import io.github.kabirnayeem99.resumade.common.utilities.invisible
 import io.github.kabirnayeem99.resumade.common.utilities.visible
 import io.github.kabirnayeem99.resumade.data.database.Project
-import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
+import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment
 import io.github.kabirnayeem99.resumade.ui.adapter.ProjectAdapter
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_projects.*
@@ -39,7 +39,7 @@ class ProjectsFragment : Fragment() {
             },
             { item: Project ->
                 createResumeViewModel.deleteProject(item)
-                (activity as CreateResumeActivity).displaySnackbar("Project deleted.")
+                (activity as CreateResumeFragment).displaySnackbar("Project deleted.")
             },
             { item: Project ->
                 item.saved = false

@@ -15,7 +15,7 @@ import io.github.kabirnayeem99.resumade.common.utilities.areAllItemsSaved
 import io.github.kabirnayeem99.resumade.common.utilities.invisible
 import io.github.kabirnayeem99.resumade.common.utilities.visible
 import io.github.kabirnayeem99.resumade.data.database.Education
-import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
+import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment
 import io.github.kabirnayeem99.resumade.ui.adapter.EducationAdapter
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_education.*
@@ -40,7 +40,7 @@ class EducationFragment : Fragment() {
                 { item: Education ->
                     // On Delete Button Clicked
                     createResumeViewModel.deleteEducation(item)
-                    (activity as CreateResumeActivity).displaySnackbar("Education deleted.")
+                    (activity as CreateResumeFragment).displaySnackbar("Education deleted.")
                 },
                 { item: Education ->
                     // On Edit Button Clicked

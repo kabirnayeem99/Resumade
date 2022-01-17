@@ -20,7 +20,7 @@ class AboutUsFragment : BaseFragment<FragmentAboutUsBinding>() {
 
     private fun setUpViews() {
         val text = resources.getString(R.string.aboutUsText)
-        binding.apply {
+        binding?.apply {
             tvAboutLinksView.text = text
             trAppRepoRow.setOnClickListener {
                 val url = "https://www.github.com/kabirnayeem99/resumade"

@@ -15,7 +15,7 @@ abstract class BaseFragment<V : ViewDataBinding> : Fragment() {
     @get:LayoutRes
     protected abstract val layout: Int
     lateinit var baseView: View
-    protected lateinit var binding: V
+    protected var binding: V? = null
 
     lateinit var loadingIndicator: KProgressHUD
 
@@ -25,7 +25,7 @@ abstract class BaseFragment<V : ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layout, container, false)
-        baseView = binding.root
+        baseView = binding!!.root
         return baseView
     }
 
@@ -43,6 +43,11 @@ abstract class BaseFragment<V : ViewDataBinding> : Fragment() {
     override fun onStop() {
         super.onStop()
         loadingIndicator.dismiss()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
     protected abstract fun onCreated(savedInstanceState: Bundle?)

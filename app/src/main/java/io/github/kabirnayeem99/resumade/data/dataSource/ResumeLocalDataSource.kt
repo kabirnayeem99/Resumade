@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class ResumeDataSource @Inject constructor(
+class ResumeLocalDataSource @Inject constructor(
     private val database: ResumeDatabase
 ) {
     fun getAllResume(): Flow<List<Resume>> {

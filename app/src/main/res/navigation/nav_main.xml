@@ -23,5 +23,22 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_createResumeFragment"
+            app:destination="@id/createResumeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/createResumeFragment"
+        android:name="io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment"
+        android:label="CreateResumeFragment"
+        tools:layout="@layout/fragment_create_resume">
+        <argument
+            android:name="resumeId"
+            android:defaultValue="-1L"
+            app:argType="long" />
     </fragment>
 </navigation>

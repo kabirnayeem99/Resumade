@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/resumesListRecyclerView"
+            android:id="@+id/rv_resume_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layoutAnimation="@anim/layout_anim_slide_right"

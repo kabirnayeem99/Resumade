@@ -8,10 +8,8 @@ import androidx.room.RoomDatabase
     version = 1
 )
 abstract class ResumeDatabase : RoomDatabase() {
-
     abstract fun resumeDao(): ResumeDao
     abstract fun educationDAO(): EducationDAO
     abstract fun experienceDAO(): ExperienceDAO
     abstract fun projectsDAO(): ProjectsDAO
-
 }

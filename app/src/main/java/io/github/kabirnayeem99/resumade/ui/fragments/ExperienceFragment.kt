@@ -14,7 +14,7 @@ import io.github.kabirnayeem99.resumade.common.utilities.areAllItemsSaved
 import io.github.kabirnayeem99.resumade.common.utilities.invisible
 import io.github.kabirnayeem99.resumade.common.utilities.visible
 import io.github.kabirnayeem99.resumade.data.database.Experience
-import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeActivity
+import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment
 import io.github.kabirnayeem99.resumade.ui.adapter.ExperienceAdapter
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_experience.*
@@ -39,7 +39,7 @@ class ExperienceFragment : Fragment() {
             { item: Experience ->
                 // On Delete Button Click
                 createResumeViewModel.deleteExperience(item)
-                (activity as CreateResumeActivity).displaySnackbar("Experience deleted.")
+                (activity as CreateResumeFragment).displaySnackbar("Experience deleted.")
             },
             { item: Experience ->
                 // On Edit Button Click
