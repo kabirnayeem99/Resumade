@@ -6,12 +6,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.webkit.WebView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,8 +19,8 @@ import io.github.kabirnayeem99.resumade.common.utilities.AppDispatchers
 import io.github.kabirnayeem99.resumade.common.utilities.buildHtml
 import io.github.kabirnayeem99.resumade.common.utilities.createPrintJob
 import io.github.kabirnayeem99.resumade.common.utilities.hideKeyboard
-import io.github.kabirnayeem99.resumade.ui.home.HomeFragment.Companion.EXTRA_RESUME_ID
 import io.github.kabirnayeem99.resumade.ui.adapter.FragmentAdapter
+import io.github.kabirnayeem99.resumade.ui.home.HomeFragment.Companion.EXTRA_RESUME_ID
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.activity_create_resume.*
 import kotlinx.coroutines.*
@@ -93,14 +92,8 @@ class CreateResumeActivity : AppCompatActivity(), CoroutineScope {
     }
 
     override fun onBackPressed() {
-        /*
-        We use the value of saved from the ViewModel
-        because the value inside the activity is destroyed
-        on every configuration change. It should only be used
-        once: while initializing the viewmodel.
-         */
         if (!createResumeViewModel.personalDetailsSaved || !createResumeViewModel.educationDetailsSaved || !createResumeViewModel.experienceDetailsSaved || !createResumeViewModel.projectDetailsSaved) {
-            AlertDialog.Builder(ContextThemeWrapper(this, R.style.MyAlertDialog))
+            MaterialAlertDialogBuilder(this)
                 .setTitle("Unsaved Details")
                 .setMessage("Some details remain unsaved. Stay to view them.")
                 .setPositiveButton("Stay") { _, _ ->

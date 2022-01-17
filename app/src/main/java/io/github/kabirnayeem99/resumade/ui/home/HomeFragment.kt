@@ -10,8 +10,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +17,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
 import io.github.kabirnayeem99.resumade.common.base.BaseFragment
@@ -150,11 +149,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 val position = viewholder.adapterPosition
                 val id: Long = resumeAdapter.getResumeAtPosition(position).id
                 if (direction == ItemTouchHelper.LEFT) {
-                    AlertDialog.Builder(
-                        ContextThemeWrapper(
-                            requireContext(),
-                            R.style.MyAlertDialog
-                        )
+                    MaterialAlertDialogBuilder(
+                        requireContext()
                     )
                         .setMessage("Are you sure you want to delete this resume?")
                         .setPositiveButton("Yes") { _, _ ->
