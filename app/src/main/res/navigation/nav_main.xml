@@ -38,7 +38,6 @@
         tools:layout="@layout/fragment_create_resume">
         <argument
             android:name="resumeId"
-            android:defaultValue="-1L"
             app:argType="long" />
     </fragment>
 </navigation>

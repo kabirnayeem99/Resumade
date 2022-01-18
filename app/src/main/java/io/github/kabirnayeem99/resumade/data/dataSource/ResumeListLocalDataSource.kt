@@ -21,7 +21,6 @@ class ResumeListLocalDataSource @Inject constructor(
     private val database: ResumeDatabase,
     private val dispatcher: DispatcherProvider,
 ) {
-
     fun getResumeOverviewList(): Flow<Resource<List<ResumeOverview>>> {
         return database.resumeDao().getAllResume().map { resumeList ->
             try {

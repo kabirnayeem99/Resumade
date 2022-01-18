@@ -33,10 +33,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     lateinit var navController: NavController
 
-    companion object {
-        const val EXTRA_RESUME_ID: String = "resumeId"
-    }
-
     override val layout: Int
         get() = R.layout.fragment_home
 
@@ -74,12 +70,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
             setupRecyclerView()
             fabAddResume.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment()
+                val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment(-1L)
                 navController.navigate(action)
-//                val newResumeId: Long = -1
-//                val intent = Intent(requireContext(), CreateResumeFragment::class.java)
-//                intent.putExtra(EXTRA_RESUME_ID, newResumeId)
-//                startActivity(intent)
             }
         }
     }
@@ -118,11 +110,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun setupRecyclerView() {
         resumeAdapter = ResumeAdapter { resumeId: Long ->
-            val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment(resumeId)
             navController.navigate(action)
-//            val intent = Intent(requireContext(), CreateResumeFragment::class.java)
-//            intent.putExtra(EXTRA_RESUME_ID, resumeId)
-//            startActivity(intent)
         }
         val linearLayoutManager = LinearLayoutManager(requireContext())
 
