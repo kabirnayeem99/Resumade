@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/createResumeFragment"
-        android:name="io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment"
+        android:name="io.github.kabirnayeem99.resumade.ui.createResume.CreateResumeFragment"
         android:label="CreateResumeFragment"
         tools:layout="@layout/fragment_create_resume">
         <argument

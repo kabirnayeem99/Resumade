@@ -11,12 +11,12 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.data.database.Experience
+import io.github.kabirnayeem99.resumade.data.dtos.Experience
 import io.github.kabirnayeem99.resumade.common.utilities.showKeyboard
 
 class ExperienceAdapter(val onSaveButtonClick: (Experience) -> Unit,
-						val onDeleteButtonClick: (Experience) -> Unit,
-						val onEditButtonClick: (Experience) -> Unit) : RecyclerView.Adapter<ExperienceAdapter.ExperienceViewHolder>() {
+                        val onDeleteButtonClick: (Experience) -> Unit,
+                        val onEditButtonClick: (Experience) -> Unit) : RecyclerView.Adapter<ExperienceAdapter.ExperienceViewHolder>() {
 
 	private var experienceList: List<Experience> = emptyList()
 

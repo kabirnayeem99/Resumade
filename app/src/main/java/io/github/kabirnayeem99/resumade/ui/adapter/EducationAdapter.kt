@@ -11,7 +11,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import io.github.kabirnayeem99.resumade.R
-import io.github.kabirnayeem99.resumade.data.database.Education
+import io.github.kabirnayeem99.resumade.data.dtos.Education
 import io.github.kabirnayeem99.resumade.common.utilities.showKeyboard
 
 class EducationAdapter(

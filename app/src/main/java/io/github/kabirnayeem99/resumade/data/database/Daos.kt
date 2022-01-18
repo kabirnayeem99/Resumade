@@ -1,6 +1,10 @@
 package io.github.kabirnayeem99.resumade.data.database
 
 import androidx.room.*
+import io.github.kabirnayeem99.resumade.data.dtos.Education
+import io.github.kabirnayeem99.resumade.data.dtos.Experience
+import io.github.kabirnayeem99.resumade.data.dtos.Project
+import io.github.kabirnayeem99.resumade.data.dtos.Resume
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -11,6 +15,9 @@ interface ResumeDao {
 
     @Query("SELECT * FROM resumes WHERE id=:resumeId")
     fun getResumeForId(resumeId: Long): Flow<Resume>
+
+    @Query("SELECT * FROM resumes WHERE id=:resumeId")
+    fun getResumeForIdOnce(resumeId: Long): Resume
 
     @Query("SELECT MAX(id) FROM resumes")
     fun getLastResumeId(): Flow<Long>

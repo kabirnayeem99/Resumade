@@ -1,7 +1,7 @@
 package io.github.kabirnayeem99.resumade.ui.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import io.github.kabirnayeem99.resumade.data.database.ResumeEntity
+import io.github.kabirnayeem99.resumade.data.dtos.ResumeEntity
 
 class DiffUtilCallback<T : ResumeEntity>(
     private val oldList: List<T>,

@@ -1,10 +1,10 @@
 package io.github.kabirnayeem99.resumade.data.repository
 
 import io.github.kabirnayeem99.resumade.data.dataSource.ResumeLocalDataSource
-import io.github.kabirnayeem99.resumade.data.database.Education
-import io.github.kabirnayeem99.resumade.data.database.Experience
-import io.github.kabirnayeem99.resumade.data.database.Project
-import io.github.kabirnayeem99.resumade.data.database.Resume
+import io.github.kabirnayeem99.resumade.data.dtos.Education
+import io.github.kabirnayeem99.resumade.data.dtos.Experience
+import io.github.kabirnayeem99.resumade.data.dtos.Project
+import io.github.kabirnayeem99.resumade.data.dtos.Resume
 import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

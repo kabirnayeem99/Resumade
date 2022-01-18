@@ -1,4 +1,4 @@
-package io.github.kabirnayeem99.resumade.ui.fragments
+package io.github.kabirnayeem99.resumade.ui.createResume.personal
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,8 +15,8 @@ import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.Text
 import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.addValidation
 import io.github.kabirnayeem99.resumade.common.utilities.inputvalidator.validateAll
 import io.github.kabirnayeem99.resumade.common.utilities.showKeyboard
-import io.github.kabirnayeem99.resumade.data.database.Resume
-import io.github.kabirnayeem99.resumade.data.database.ResumeEntity
+import io.github.kabirnayeem99.resumade.data.dtos.Resume
+import io.github.kabirnayeem99.resumade.data.dtos.ResumeEntity
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_personal.*
 

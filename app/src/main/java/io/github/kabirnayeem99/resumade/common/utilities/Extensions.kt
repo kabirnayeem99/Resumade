@@ -7,7 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
-import io.github.kabirnayeem99.resumade.data.database.ResumeEntity
+import io.github.kabirnayeem99.resumade.data.dtos.ResumeEntity
 
 
 fun View.showKeyboard(context: Context?) {

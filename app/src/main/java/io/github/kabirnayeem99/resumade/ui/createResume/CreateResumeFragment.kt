@@ -1,4 +1,4 @@
-package io.github.kabirnayeem99.resumade.ui.activities
+package io.github.kabirnayeem99.resumade.ui.createResume
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -21,6 +21,8 @@ import io.github.kabirnayeem99.resumade.common.utilities.buildHtml
 import io.github.kabirnayeem99.resumade.common.utilities.createPrintJob
 import io.github.kabirnayeem99.resumade.common.utilities.hideKeyboard
 import io.github.kabirnayeem99.resumade.databinding.FragmentCreateResumeBinding
+import io.github.kabirnayeem99.resumade.ui.activities.HostActivity
+import io.github.kabirnayeem99.resumade.ui.activities.PreviewActivity
 import io.github.kabirnayeem99.resumade.ui.adapter.FragmentAdapter
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.coroutines.*
@@ -251,15 +253,10 @@ class CreateResumeFragment : BaseFragment<FragmentCreateResumeBinding>(), Corout
             createResumeTabs.setupWithViewPager(createResumeViewpager)
             createResumeFab.hide()
 
-
             viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(p0: Int) {
-                    // Do nothing
-                }
+                override fun onPageScrollStateChanged(p0: Int) {}
 
-                override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
-                    // Do nothing
-                }
+                override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {}
 
                 override fun onPageSelected(position: Int) {
                     adjustFabBehaviour(position)

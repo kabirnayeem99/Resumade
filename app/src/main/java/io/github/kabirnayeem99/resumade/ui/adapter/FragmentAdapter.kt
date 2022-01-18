@@ -2,7 +2,7 @@ package io.github.kabirnayeem99.resumade.ui.adapter
 
 import io.github.kabirnayeem99.resumade.ui.fragments.EducationFragment
 import io.github.kabirnayeem99.resumade.ui.fragments.ExperienceFragment
-import io.github.kabirnayeem99.resumade.ui.fragments.PersonalFragment
+import io.github.kabirnayeem99.resumade.ui.createResume.personal.PersonalFragment
 import io.github.kabirnayeem99.resumade.ui.fragments.ProjectsFragment
 
 class FragmentAdapter(manager: androidx.fragment.app.FragmentManager) :

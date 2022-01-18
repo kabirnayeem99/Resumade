@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.github.kabirnayeem99.resumade.data.database.Resume
 import io.github.kabirnayeem99.resumade.data.database.ResumeDatabase
+import io.github.kabirnayeem99.resumade.data.dtos.Resume
 import javax.inject.Singleton
 
 @Module

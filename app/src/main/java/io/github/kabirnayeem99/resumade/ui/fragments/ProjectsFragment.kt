@@ -13,8 +13,8 @@ import io.github.kabirnayeem99.resumade.R
 import io.github.kabirnayeem99.resumade.common.utilities.areAllItemsSaved
 import io.github.kabirnayeem99.resumade.common.utilities.invisible
 import io.github.kabirnayeem99.resumade.common.utilities.visible
-import io.github.kabirnayeem99.resumade.data.database.Project
-import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment
+import io.github.kabirnayeem99.resumade.data.dtos.Project
+import io.github.kabirnayeem99.resumade.ui.createResume.CreateResumeFragment
 import io.github.kabirnayeem99.resumade.ui.adapter.ProjectAdapter
 import io.github.kabirnayeem99.resumade.ui.viewmodel.CreateResumeViewModel
 import kotlinx.android.synthetic.main.fragment_projects.*

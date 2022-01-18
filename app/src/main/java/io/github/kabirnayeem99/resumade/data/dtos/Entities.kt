@@ -1,4 +1,4 @@
-package io.github.kabirnayeem99.resumade.data.database
+package io.github.kabirnayeem99.resumade.data.dtos
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

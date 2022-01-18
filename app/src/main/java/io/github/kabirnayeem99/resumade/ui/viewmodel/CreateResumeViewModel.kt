@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.kabirnayeem99.resumade.data.database.Education
-import io.github.kabirnayeem99.resumade.data.database.Experience
-import io.github.kabirnayeem99.resumade.data.database.Project
-import io.github.kabirnayeem99.resumade.data.database.Resume
+import io.github.kabirnayeem99.resumade.data.dtos.Education
+import io.github.kabirnayeem99.resumade.data.dtos.Experience
+import io.github.kabirnayeem99.resumade.data.dtos.Project
+import io.github.kabirnayeem99.resumade.data.dtos.Resume
 import io.github.kabirnayeem99.resumade.domain.repository.ResumeRepository
-import io.github.kabirnayeem99.resumade.ui.activities.CreateResumeFragment
+import io.github.kabirnayeem99.resumade.ui.createResume.CreateResumeFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
