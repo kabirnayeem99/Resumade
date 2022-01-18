@@ -74,6 +74,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 navController.navigate(action)
             }
         }
+        setUpActionBar()
+    }
+
+    private fun setUpActionBar() {
+        binding?.apply {
+            val toolbar = materialSearchBar.getToolbar()
+            materialSearchBar.apply {
+                navigationIconCompat = R.drawable.ic_fluent_info_24_selector
+                setHint(getString(R.string.search_for_resume))
+                setOnClickListener {
+                    materialSearchBar.requestFocus()
+                }
+                setNavigationOnClickListener {
+                    materialSearchBar.requestFocus()
+                }
+            }
+        }
     }
 
 

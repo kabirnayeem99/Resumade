@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Dark">
+    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
         <item name="android:radius">20dp</item>
         <item name="actionBarStyle">@style/ActionBarStyle</item>
         <item name="android:alertDialogTheme">@style/MyAlertDialog</item>

@@ -13,7 +13,7 @@ android {
     compileSdkVersion 31
     defaultConfig {
         applicationId "io.github.kabirnayeem99.resumade"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 31
         versionCode 11
         versionName "2.0.1"
@@ -116,5 +116,8 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     implementation "androidx.navigation:navigation-compose:2.4.0-rc01"
+
+    // Material You style search bar
+    implementation 'io.github.lapism:search:1.2.1'
 }
 
