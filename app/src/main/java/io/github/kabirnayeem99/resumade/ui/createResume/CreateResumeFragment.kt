@@ -46,13 +46,7 @@ class CreateResumeFragment : BaseFragment<FragmentCreateResumeBinding>(), Corout
         var currentResumeId: Long = -1L
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
-
-//    override fun onBackPressed() {
+    //    override fun onBackPressed() {
 //        if (!createResumeViewModel.personalDetailsSaved || !createResumeViewModel.educationDetailsSaved || !createResumeViewModel.experienceDetailsSaved || !createResumeViewModel.projectDetailsSaved) {
 //            MaterialAlertDialogBuilder(requireContext())
 //                .setTitle("Unsaved Details")

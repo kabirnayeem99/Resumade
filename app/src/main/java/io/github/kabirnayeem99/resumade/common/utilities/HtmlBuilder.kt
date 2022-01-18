@@ -4,6 +4,7 @@ import io.github.kabirnayeem99.resumade.data.dtos.Education
 import io.github.kabirnayeem99.resumade.data.dtos.Experience
 import io.github.kabirnayeem99.resumade.data.dtos.Project
 import io.github.kabirnayeem99.resumade.data.dtos.Resume
+import java.util.*
 
 fun createBaseHTML() : String {
 	var html = ""
@@ -98,7 +99,7 @@ fun addPersonalInfo(resume: Resume) : String {
 	if (resume.isNotEmpty()) {
 		html += "<div class=\"personal-info\">\n" +
 				"        <div class=\"name-container\">\n" +
-				"            <h1 class=\"name\">${resume.name.toUpperCase()}</h1>\n" +
+				"            <h1 class=\"name\">${resume.name.uppercase(Locale.getDefault())}</h1>\n" +
 				"        </div>\n" +
 				"        <div class=\"contact-info-container\">\n" +
 				"            <p id=\"phone-number\">${resume.phone}</p> \n" +

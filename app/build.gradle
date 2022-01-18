@@ -42,7 +42,7 @@ android {
     }
 }
 
-def build_param = "${build}";
+def build_param = "${build}"
 
 if (build_param != "dev") {
     //exclude production build

@@ -27,14 +27,6 @@ abstract class BaseDialog<V : ViewDataBinding> : DialogFragment() {
 
     }
 
-    // we need to move the code in somewhere else, for now, this is only feasible solution
-    // to add this transition animation in dialog
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//        dialog?.window
-//            ?.attributes?.windowAnimations = R.style.DialogAnimation
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

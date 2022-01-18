@@ -15,7 +15,4 @@ class HostActivity : BaseActivity<ActivityHostBinding>() {
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 }
