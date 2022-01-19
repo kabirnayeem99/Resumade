@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
         <item name="android:radius">20dp</item>
         <item name="actionBarStyle">@style/ActionBarStyle</item>
-        <item name="android:alertDialogTheme">@style/MyAlertDialog</item>
+        <item name="android:statusBarColor">?android:colorBackground</item>
     </style>
 
     <style name="ActionBarStyle" parent="Widget.Material3.ActionBar.Solid">

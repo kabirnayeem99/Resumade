@@ -15,7 +15,6 @@
         android:id="@+id/mcv_resume_item_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
         android:layout_marginVertical="8dp"
         android:elevation="3dp"
         android:padding="16dp"

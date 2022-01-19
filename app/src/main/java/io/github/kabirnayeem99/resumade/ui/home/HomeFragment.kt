@@ -1,12 +1,7 @@
 package io.github.kabirnayeem99.resumade.ui.home
 
-import android.graphics.Color
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +18,7 @@ import io.github.kabirnayeem99.resumade.common.utilities.visible
 import io.github.kabirnayeem99.resumade.databinding.FragmentHomeBinding
 import io.github.kabirnayeem99.resumade.ui.adapter.ResumeAdapter
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -42,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun subscribeQuery() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.getResumeList()
                 homeViewModel.homeUiState.collect {
@@ -64,53 +60,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun setUpViews() {
-        setHasOptionsMenu(true)
         navController = findNavController()
         binding?.apply {
-
-            setupRecyclerView()
-            fabAddResume.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment(-1L)
-                navController.navigate(action)
-            }
+            setupRecyclerView(this)
+            fabAddResume.setOnClickListener { navigateToCreateResumeScreen() }
         }
-        setUpActionBar()
+        setUpPopUpMenu()
     }
 
-    private fun setUpActionBar() {
+    private fun setUpPopUpMenu() {
         binding?.apply {
-            val toolbar = materialSearchBar.getToolbar()
-            materialSearchBar.apply {
-                navigationIconCompat = R.drawable.ic_fluent_info_24_selector
-                setHint(getString(R.string.search_for_resume))
-                setOnClickListener {
-                    materialSearchBar.requestFocus()
-                }
-                setNavigationOnClickListener {
-                    materialSearchBar.requestFocus()
-                }
-            }
-        }
-    }
-
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_main_activity, menu)
-        val span = SpannableString("About")
-        span.setSpan(ForegroundColorSpan(Color.BLACK), 0, span.length, 0)
-        menu.getItem(0)?.title = span
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.about -> {
-                findNavController().navigate(R.id.action_homeFragment_to_aboutUsFragment)
+            val popup = PopupMenu(requireContext(), ivMenuButton)
+            popup.menuInflater.inflate(R.menu.menu_home, popup.menu)
+            popup.setOnMenuItemClickListener {
+                 navigateToAboutScreen()
                 true
             }
-            else -> super.onOptionsItemSelected(item)
+            ivMenuButton.setOnClickListener { popup.show() }
         }
+    }
 
+    private fun navigateToAboutScreen() {
+        val action = HomeFragmentDirections.actionHomeFragmentToAboutUsFragment()
+        navController.navigate(action)
     }
 
     private fun toggleNoResumesLayout(size: Int) {
@@ -125,17 +97,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun setupRecyclerView() {
-        resumeAdapter = ResumeAdapter { resumeId: Long ->
-            val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment(resumeId)
-            navController.navigate(action)
-        }
+    private fun setupRecyclerView(binding: FragmentHomeBinding) {
         val linearLayoutManager = LinearLayoutManager(requireContext())
-
-        binding?.rvResumeList?.apply {
+        resumeAdapter = ResumeAdapter { resumeId: Long ->
+            navigateToCreateResumeScreen(resumeId)
+        }
+        binding.rvResumeList.apply {
             adapter = resumeAdapter
             layoutManager = linearLayoutManager
         }
+    }
+
+    private fun navigateToCreateResumeScreen(resumeId: Long = -1L) {
+        val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment(resumeId)
+        navController.navigate(action)
     }
 
 
