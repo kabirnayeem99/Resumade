@@ -1,4 +1,4 @@
-package io.github.kabirnayeem99.resumade.ui.adapter
+package io.github.kabirnayeem99.resumade.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.kabirnayeem99.resumade.databinding.ListItemResumeBinding
 import io.github.kabirnayeem99.resumade.domain.entity.ResumeOverview
 
-class ResumeAdapter(val onResumeCardClick: (resumeId: Long) -> Unit) :
-    RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder>() {
+class ResumeAdapter : RecyclerView.Adapter<ResumeAdapter.ResumeViewHolder>() {
+
+    private var onResumeCardClick: (resumeId: Long) -> Unit = {}
+
+    private var onResumeCardLongClick: (resumeId: Long) -> Unit = {}
+
+    fun setOnResumeCardClickListener(func: (resumeId: Long) -> Unit) {
+        onResumeCardClick = func
+    }
+
+    fun setOnResumeCardLongClickListener(func: (resumeId: Long) -> Unit) {
+        onResumeCardLongClick = func
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResumeViewHolder {
@@ -31,8 +42,14 @@ class ResumeAdapter(val onResumeCardClick: (resumeId: Long) -> Unit) :
 
         fun bind(resumeOverview: ResumeOverview) {
             binding.resumeOverview = resumeOverview
+
             binding.mcvResumeItemRoot.setOnClickListener {
                 onResumeCardClick(resumeOverview.id)
+            }
+
+            binding.mcvResumeItemRoot.setOnLongClickListener {
+                onResumeCardLongClick(resumeOverview.id)
+                true
             }
         }
     }

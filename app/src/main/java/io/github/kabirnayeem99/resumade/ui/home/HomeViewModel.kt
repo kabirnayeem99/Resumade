@@ -3,7 +3,6 @@ package io.github.kabirnayeem99.resumade.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.kabirnayeem99.resumade.domain.entity.ResumeOverview
 import io.github.kabirnayeem99.resumade.domain.repository.ResumeListRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,15 +15,14 @@ import javax.inject.Inject
 class HomeViewModel
 @Inject constructor(private val repository: ResumeListRepository) : ViewModel() {
 
-
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
 
     private var deleteResumeJob: Job? = null
-    fun deleteResume(resumeOverview: ResumeOverview) {
+    fun deleteResume(resumeId: Long) {
         deleteResumeJob?.cancel()
         deleteResumeJob = viewModelScope.launch {
-            repository.deleteResume(resumeOverview).collect { message ->
+            repository.deleteResume(resumeId).collect { message ->
                 _homeUiState.update { it.copy(message = message) }
             }
         }

@@ -55,4 +55,7 @@ You should check out Standard Resume if you need something more professional.</s
     <string name="rate_the_app">Rate the app</string>
     <string name="add_resume">Add resume</string>
     <string name="search_for_resume">Search for resume</string>
+    <string name="delete_confirmation">Are you sure you want to delete this resume?</string>
+    <string name="delete_action">Delete</string>
+    <string name="cancel_action">Cancel</string>
 </resources>

@@ -6,13 +6,13 @@ import io.github.kabirnayeem99.resumade.common.utilities.Resource
 import io.github.kabirnayeem99.resumade.data.database.ResumeDatabase
 import io.github.kabirnayeem99.resumade.data.dtos.mapper.toResumeOverview
 import io.github.kabirnayeem99.resumade.domain.entity.ResumeOverview
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 private const val TAG = "ResumeListLocalDataSour"
@@ -29,28 +29,31 @@ class ResumeListLocalDataSource @Inject constructor(
                 }
                 Resource.Success(resumeOverviewList)
             } catch (e: Exception) {
+                Log.e(TAG, "getResumeOverviewList: ${e.localizedMessage}", e)
                 Resource.Error(e.localizedMessage ?: "Could not get the resumes.")
             }
         }
     }
 
-    fun deleteResume(resumeOverview: ResumeOverview): Flow<String> {
+    fun deleteResume(resumeId: Long): Flow<String> {
         return flow {
             try {
-                val resumeId = resumeOverview.id
-                database.resumeDao().deleteResumeForId(resumeOverview.id)
-                withContext(dispatcher.default) {
+                val resumeOverview =
+                    database.resumeDao().getResumeForIdOnce(resumeId).toResumeOverview()
+                database.resumeDao().deleteResumeForId(resumeId)
+                coroutineScope {
                     val deleteEducationJob = launch { deleteEducationsForResumeId(resumeId) }
                     val deleteProjectJob = launch { deleteProjectsForResumeId(resumeId) }
                     val deleteExperienceJob = launch { deleteExperienceForResumeId(resumeId) }
                     joinAll(deleteEducationJob, deleteProjectJob, deleteExperienceJob)
-                    emit("Successfully deleted \'${resumeOverview.resumeLabel}\' ")
                 }
-                emit("")
+                emit("Successfully deleted \'${resumeOverview.resumeLabel}\' ")
+                emit(resumeId.toString())
             } catch (e: Exception) {
-                emit("Failed to delete '${resumeOverview.resumeLabel}' properly.")
+                Log.e(TAG, "deleteResume: ${e.localizedMessage}", e)
+                emit(e.localizedMessage ?: "Failed to delete.")
             }
-        }.flowOn(dispatcher.default)
+        }.flowOn(dispatcher.io)
     }
 
     private fun deleteEducationsForResumeId(resumeId: Long) {
@@ -60,6 +63,7 @@ class ResumeListLocalDataSource @Inject constructor(
                 database.educationDAO().deleteEducation(it)
             }
         } catch (e: Exception) {
+
             Log.e(TAG, "deleteEducationsForResumeId: ${e.localizedMessage} ", e)
         }
     }

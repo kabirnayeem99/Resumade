@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ResumeListRepository {
     fun getResumeList(): Flow<Resource<List<ResumeOverview>>>
-    fun deleteResume(resumeOverview: ResumeOverview): Flow<String>
+    fun deleteResume(resumeId: Long): Flow<String>
 }

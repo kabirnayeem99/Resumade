@@ -15,7 +15,7 @@ class DefaultResumeListRepository @Inject constructor(
         return dataSource.getResumeOverviewList()
     }
 
-    override fun deleteResume(resumeOverview: ResumeOverview): Flow<String> {
-        return dataSource.deleteResume(resumeOverview)
+    override fun deleteResume(resumeId: Long): Flow<String> {
+        return dataSource.deleteResume(resumeId)
     }
 }

@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.kabirnayeem99.resumade.R
 import io.github.kabirnayeem99.resumade.common.base.BaseFragment
+import io.github.kabirnayeem99.resumade.common.ktx.showAlertDialog
 import io.github.kabirnayeem99.resumade.common.ktx.showMessage
 import io.github.kabirnayeem99.resumade.common.utilities.invisible
 import io.github.kabirnayeem99.resumade.common.utilities.visible
 import io.github.kabirnayeem99.resumade.databinding.FragmentHomeBinding
-import io.github.kabirnayeem99.resumade.ui.adapter.ResumeAdapter
 import kotlinx.coroutines.launch
 
 
@@ -25,9 +25,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val homeViewModel: HomeViewModel by viewModels()
 
-    private lateinit var resumeAdapter: ResumeAdapter
+    private val resumeAdapter: ResumeAdapter by lazy {
+        ResumeAdapter()
+    }
 
-    lateinit var navController: NavController
+    private lateinit var navController: NavController
 
     override val layout: Int
         get() = R.layout.fragment_home
@@ -35,6 +37,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onCreated(savedInstanceState: Bundle?) {
         setUpViews()
         subscribeQuery()
+    }
+
+    private fun setUpViews() {
+        navController = findNavController()
+        binding?.apply {
+            setupRecyclerView(this)
+            fabAddResume.setOnClickListener { navigateToCreateResumeScreen() }
+        }
+        setUpPopUpMenu()
     }
 
     private fun subscribeQuery() {
@@ -59,31 +70,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun setUpViews() {
-        navController = findNavController()
-        binding?.apply {
-            setupRecyclerView(this)
-            fabAddResume.setOnClickListener { navigateToCreateResumeScreen() }
-        }
-        setUpPopUpMenu()
-    }
 
     private fun setUpPopUpMenu() {
         binding?.apply {
             val popup = PopupMenu(requireContext(), ivMenuButton)
             popup.menuInflater.inflate(R.menu.menu_home, popup.menu)
             popup.setOnMenuItemClickListener {
-                 navigateToAboutScreen()
+                navigateToAboutScreen()
                 true
             }
             ivMenuButton.setOnClickListener { popup.show() }
         }
     }
 
-    private fun navigateToAboutScreen() {
-        val action = HomeFragmentDirections.actionHomeFragmentToAboutUsFragment()
-        navController.navigate(action)
-    }
 
     private fun toggleNoResumesLayout(size: Int) {
         binding?.apply {
@@ -98,10 +97,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun setupRecyclerView(binding: FragmentHomeBinding) {
-        val linearLayoutManager = LinearLayoutManager(requireContext())
-        resumeAdapter = ResumeAdapter { resumeId: Long ->
+        val linearLayoutManager = LinearLayoutManager(context)
+
+        resumeAdapter.setOnResumeCardClickListener { resumeId: Long ->
             navigateToCreateResumeScreen(resumeId)
         }
+
+        resumeAdapter.setOnResumeCardLongClickListener { resumeId: Long ->
+            showDeleteDialogForResume(resumeId)
+        }
+
         binding.rvResumeList.apply {
             adapter = resumeAdapter
             layoutManager = linearLayoutManager
@@ -111,6 +116,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun navigateToCreateResumeScreen(resumeId: Long = -1L) {
         val action = HomeFragmentDirections.actionHomeFragmentToCreateResumeFragment(resumeId)
         navController.navigate(action)
+    }
+
+    private fun navigateToAboutScreen() {
+        val action = HomeFragmentDirections.actionHomeFragmentToAboutUsFragment()
+        navController.navigate(action)
+    }
+
+
+    private fun showDeleteDialogForResume(resumeId: Long) {
+        showAlertDialog(
+            getString(R.string.delete_confirmation),
+            getString(R.string.delete_action),
+            getString(R.string.cancel_action),
+            {
+            homeViewModel.deleteResume(resumeId)
+            },
+            {}
+        )
     }
 
 
